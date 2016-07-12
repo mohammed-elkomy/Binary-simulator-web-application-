@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Logic simulator</title>
+
+    <link rel="stylesheet" href="./stylesheets/material.fonts.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/material.min.css">
+    <link rel="stylesheet" href="./stylesheets/styles.css">
+
+</head>
+<body>
+
+<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+
+
+
+<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+    <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Logic simulator</span><div class="mdl-layout-spacer"></div>
+
+            <!--white holder -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <div class="mdl-textfield__expandable-holder">
+                    <!--white holder -->
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="demo-ribbon"></div>
+    <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+            <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+
+                <form action="#">
+
+
+
+
+
+
+                    <ul id="operations_list" class="mdl-list operation-list" style="margin-left:50px;float:right;float:top;">
+                        
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Addition</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label id="mamam" class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-1">
+                                         <input type="radio" id="operation-1" class="mdl-radio__button" name="options2"  checked />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Subtraction</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-2">
+                                         <input type="radio" id="operation-2" class="mdl-radio__button" name="options2"  />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Normal Mult</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-3">
+                                         <input type="radio" id="operation-3" class="mdl-radio__button" name="options2"   />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Booth Mult</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-4">
+                                         <input type="radio" id="operation-4" class="mdl-radio__button" name="options2"   />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Bit-pair Mult</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-5">
+                                         <input type="radio" id="operation-5" class="mdl-radio__button" name="options2"   />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Restoring division</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-6">
+                                         <input type="radio" id="operation-6" class="mdl-radio__button" name="options2"   />
+                                     </label>
+                        </span>
+                        </li>
+
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">Non-restoring Division</span>
+                                <span class="mdl-list__item-secondary-action">
+                                     <label class="mdl-radio  mdl-js-radio mdl-js-ripple-effect" for="operation-7">
+                                         <input type="radio" id="operation-7" class="mdl-radio__button" name="options2"  />
+                                     </label>
+                        </span>
+                        </li>
+
+
+                    </ul>
+
+
+
+
+<span>
+                <ul class="mdl-list input-items" id="LHS_parameters">
+
+
+                    <!-- text entries -->
+                    <li class="mdl-list__item"  style=" width:600px;" >
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input  class="mdl-textfield__input" type="n" id="operand1" onkeypress="return isValidKey(event,this)">
+                            <label class="mdl-textfield__label" for="operand1">First Operand</label>
+                        </div>
+                    </li>
+
+                    <li class="mdl-list__item" style=" width:600px;" >
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input  class="mdl-textfield__input" type="n" id="operand2" onkeypress="return isValidKey(event,this)">
+                            <label class="mdl-textfield__label" for="operand2">Second Operand</label>
+
+                        </div>
+                    </li>
+
+
+                    <li class="mdl-list__item"  >
+                        <label class="mdl-list__item-primary-content mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                            <input type="radio" id="option-1" class="mdl-radio__button" name="options"  checked>
+                            <span class="mdl-radio__label">Binary</span>
+                        </label >
+
+
+                        <label class="mdl-list__item-secondary-action  mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2" >
+                            <input type="radio" id="option-2" class="mdl-radio__button" name="options" >
+                            <span class="mdl-radio__label" style="padding-right: 1px">Decimal
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        </label >
+                    </li>
+
+                    <li class="mdl-list__item"  >
+                        <label class="mdl-list__item-primary-content mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                            <input type="radio" id="option-3" class="mdl-radio__button" name="options" >
+                            <span class="mdl-radio__label">Octal</span>
+                        </label >
+
+
+                        <label class="mdl-list__item-secondary-action  mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+                            <input type="radio" id="option-4" class="mdl-radio__button" name="options" >
+                            <span class="mdl-radio__label">Hexadecimal</span>
+                        </label >
+                    </li>
+
+                    <li class="mdl-list__item" style=" width:170px; margin-left: 50px; margin-top: 15px;    " >
+
+
+
+                        <span >
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+                                <input type="checkbox" id="list-switch-1" class="mdl-switch__input" checked />
+                            </label>
+                        </span>
+
+                        <span class="mdl-list__item-secondary-content" style="margin-left: 45px;">Signed</span>
+
+
+                    </li>
+
+
+
+                    <li class="mdl-list__item" style="margin-top: 15px;">
+
+                        <button  type="button" class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="ComputationRequest()">
+                            Compute
+                        </button>
+
+                        <button type="button" class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="Reset()">
+                            Reset
+                        </button>
+                    </li>
+                </ul>
+</span>
+
+
+                </form>
+
+
+            <div id="output"  >    <!-- output text --></div>
+
+
+                <p id="outputText" style='text-align: center'></p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <footer class="demo-footer mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+                <ul class="mdl-mini-footer--link-list">
+                    <li><a target="_blank" href=
+                        "http://localhost:3000/f/help.png">Help</a></li>
+                    <li><a target="_blank" href=
+                        "http://localhost:3000/f/tech.pdf">Technical implementation </a></li>
+                    <li><a href= "javascript:;" onclick="Dialog()">About this project</a></li>
+                </ul>
+            </div>
+        </footer>
+
+
+
+
+
+    </main>
+
+</div>
+
+
+
+
+<a href="http://localhost:3000/f/source.pdf" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+
+
+
+
+
+
+
+
+<script src="./javascripts/material.min.js"></script>
+<script src="./javascripts/frontEndStuff.js"></script>
+<script src="./javascripts/jquery.min.js"></script>
+
+</body>
+</html>
