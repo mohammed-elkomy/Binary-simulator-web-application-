@@ -1,5 +1,5 @@
 {
-  "invoice": true,
-  "dpd": true,
-  "printer": true
+  "invoice": false,
+  "dpd": false,
+  "printer": false
 }
